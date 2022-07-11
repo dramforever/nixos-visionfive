@@ -1,0 +1,43 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/pinctrl-starfive.h>
+
+/ {
+	compatible = "starfive,visionfive-v1";
+};
+
+&gpio {
+	pinctrl-names = "default";
+	pinctrl-0 = <&gpiojtag_pins>;
+
+	gpiojtag_pins: gpiojtag-0 {
+		input-pins {
+			pinmux =
+				<GPIOMUX(1, GPO_LOW, GPO_DISABLE, GPI_CPU_JTAG_TCK)>,
+				<GPIOMUX(2, GPO_LOW, GPO_DISABLE, GPI_CPU_JTAG_TDI)>,
+				<GPIOMUX(3, GPO_LOW, GPO_DISABLE, GPI_CPU_JTAG_TMS)>;
+			bias-disable;
+			input-enable;
+			input-schmitt-enable;
+		};
+
+		output-pins {
+			pinmux =
+				<GPIOMUX(0, GPO_JTAG_TDO, GPO_JTAG_TDO_OEN, GPI_NONE)>;
+			bias-disable;
+			drive-strength = <35>;
+			input-disable;
+			input-schmitt-disable;
+		};
+
+		trstn-pins {
+			pinmux =
+				<GPIOMUX(4, GPO_LOW, GPO_DISABLE, GPI_CPU_JTAG_TRST)>;
+			bias-pull-up;
+			drive-strength = <14>;
+			input-enable;
+			input-schmitt-enable;
+		};
+	};
+};

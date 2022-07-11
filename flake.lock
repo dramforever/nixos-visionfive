@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1657437778,
+        "narHash": "sha256-/ZOUEu2Z5WaIT+XzUNCXfjw23KB2f612/NYI+cKderc=",
+        "owner": "NickCao",
+        "repo": "nixpkgs",
+        "rev": "094078ec5c7e46b1d2a46ab31e11a1a61e5c4f4b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NickCao",
+        "ref": "riscv",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "starfive-linux": "starfive-linux"
+      }
+    },
+    "starfive-linux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1655765200,
+        "narHash": "sha256-kjOoNJhmmQdpmtx0m1ZovH3mj2x4NB6iInEknxZq8Dw=",
+        "owner": "starfive-tech",
+        "repo": "linux",
+        "rev": "8fb50a9b3e5d401d4ec169c858e8b7ba0a542955",
+        "type": "github"
+      },
+      "original": {
+        "owner": "starfive-tech",
+        "ref": "visionfive-5.18.y",
+        "repo": "linux",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
