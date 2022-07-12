@@ -44,6 +44,7 @@
       "spi-cadence-quadspi"
       "mtd"
       "mtdblock"
+      "ledtrig-heartbeat"
     ];
   };
 
