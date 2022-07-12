@@ -4,6 +4,20 @@
   disabledModules = [ "hardware/device-tree.nix" ];
   imports = [ ./modules/device-tree.nix ];
 
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age = {
+      keyFile = "/var/lib/age-key.txt";
+      sshKeyPaths = [ ];
+    };
+
+    gnupg.sshKeyPaths = [ ];
+
+    secrets = {
+      wpa_supplicant = {};
+    };
+  };
+
   boot = {
     loader = {
       grub.enable = false;
@@ -52,6 +66,14 @@
   systemd.services."serial-getty@hvc0".enable = false;
 
   networking.hostName = "misaki";
+
+  networking.wireless = {
+    enable = true;
+    environmentFile = config.sops.secrets.wpa_supplicant.path;
+    extraConfig = ''
+      @EXTRA_CONFIG@
+    '';
+  };
 
   security.polkit.enable = false;
   services.udisks2.enable = false;

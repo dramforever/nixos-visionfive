@@ -8,6 +8,14 @@ Requires a U-Boot installation that supports Distroboot, e.g. [NickCao/u-boot-st
 
 ## Notes on some files
 
+### `secrets.yaml`
+
+My secret stuff. You just don't get to see them.
+
+Currently used for:
+
+- `networking.wireless` configuration (`wpa_supplicant`)
+
 ### `starfive-linux.nix`
 
 Based on: https://github.com/MatthewCroughan/visionfive-nix/blob/master/kernel.nix

@@ -1,6 +1,11 @@
 {
   inputs.nixpkgs.url = "github:NickCao/nixpkgs/riscv";
 
+  inputs.sops-nix = {
+    url = "github:Mic92/sops-nix";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   inputs.starfive-linux = {
     url = "github:starfive-tech/linux/visionfive-5.18.y";
     flake = false;
@@ -9,7 +14,7 @@
   nixConfig.extra-substituters = "https://cache.nichi.co";
   nixConfig.extra-trusted-public-keys = "hydra.nichi.co-0:P3nkYHhmcLR3eNJgOAnHDjmQLkfqheGyhZ6GLrUVHwk=";
 
-  outputs = { self, nixpkgs, starfive-linux }:
+  outputs = { self, nixpkgs, sops-nix, starfive-linux }:
     let eachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
     in {
       legacyPackages = eachSystem (system:
@@ -32,6 +37,7 @@
         system = "riscv64-linux";
         modules = [
           ./configuration.nix
+          sops-nix.nixosModules.sops
           { nixpkgs.pkgs = self.legacyPackages."x86_64-linux"; }
         ];
       };
