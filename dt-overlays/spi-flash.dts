@@ -1,0 +1,17 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/starfive-jh7100.h>
+
+/ {
+	compatible = "starfive,visionfive-v1";
+};
+
+&qspi {
+	clocks = <&clkgen JH7100_CLK_QSPI_REF>;
+	status = "okay";
+};
+
+&nor_flash {
+	compatible = "jedec,spi-nor";
+};

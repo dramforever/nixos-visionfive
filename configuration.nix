@@ -32,9 +32,19 @@
       "earlycon=sbi"
       # https://github.com/starfive-tech/linux/issues/14
       "stmmac.chain_mode=1"
+
+      # FIXME: Required for QSPI
+      "clk_ignore_unused"
     ];
 
-    initrd.kernelModules = [ "dw-axi-dmac-platform" "dw_mmc-pltfm" "spi-dw-mmio" ];
+    initrd.kernelModules = [
+      "dw-axi-dmac-platform"
+      "dw_mmc-pltfm"
+      "spi-dw-mmio"
+      "spi-cadence-quadspi"
+      "mtd"
+      "mtdblock"
+    ];
   };
 
   fileSystems."/" = {
@@ -49,6 +59,10 @@
       {
         name = "jtag-pins";
         dtsFile = ./dt-overlays/jtag-pins.dts;
+      }
+      {
+        name = "spi-flash";
+        dtsFile = ./dt-overlays/spi-flash.dts;
       }
     ];
   };
