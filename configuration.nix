@@ -38,10 +38,13 @@
       "dw-axi-dmac-platform"
       "dw_mmc-pltfm"
       "spi-dw-mmio"
+      "ledtrig-heartbeat"
+    ];
+
+    kernelModules = [
       "spi-cadence-quadspi"
       "mtd"
       "mtdblock"
-      "ledtrig-heartbeat"
     ];
   };
 
