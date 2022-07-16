@@ -32,9 +32,6 @@
       "earlycon=sbi"
       # https://github.com/starfive-tech/linux/issues/14
       "stmmac.chain_mode=1"
-
-      # FIXME: Required for QSPI
-      "clk_ignore_unused"
     ];
 
     initrd.kernelModules = [
@@ -47,6 +44,10 @@
       "ledtrig-heartbeat"
     ];
   };
+
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.visionfive-kernel-modules
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/misaki-nixos";

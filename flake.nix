@@ -26,10 +26,13 @@
 
       overlays.starfive-linux = self: super: {
         linuxPackages_starfive =
-          self.linuxPackagesFor
+          (self.linuxPackagesFor
             (self.callPackage ./starfive-linux.nix {
               src = starfive-linux;
               kernelPatches = with self.kernelPatches; [];
+            })).extend (kself: ksuper: {
+              visionfive-kernel-modules =
+                kself.callPackage ./kernel-modules {};
             });
       };
 

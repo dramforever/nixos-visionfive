@@ -8,7 +8,10 @@
 };
 
 &qspi {
-	clocks = <&clkgen JH7100_CLK_QSPI_REF>;
+	clocks = <&clkgen JH7100_CLK_QSPI_REF>,
+		<&clkgen JH7100_CLK_QSPI_AHB>,
+		<&clkgen JH7100_CLK_QSPI_APB>;
+	clock-names = "refclk", "ahb_clk", "apb_clk";
 	status = "okay";
 };
 
