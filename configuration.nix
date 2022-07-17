@@ -114,6 +114,10 @@
     ];
   };
 
+  services.journald.extraConfig = ''
+    Storage=volatile
+  '';
+
   environment.systemPackages = with pkgs; [ neofetch ];
 
   system.stateVersion = "21.11";
