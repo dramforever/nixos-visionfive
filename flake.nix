@@ -28,6 +28,7 @@
           crossSystem.config = "riscv64-unknown-linux-gnu";
           overlays = [
             self.overlays.starfive-linux
+            self.overlays.etnaviv
             binderlay.overlays.default
           ];
         });
@@ -42,6 +43,12 @@
               visionfive-kernel-modules =
                 kself.callPackage ./kernel-modules {};
             });
+      };
+
+      overlays.etnaviv = self: super: {
+        libdrm_etnaviv = super.libdrm.overrideAttrs (old: {
+          mesonFlags = (old.mesonFlags or []) ++ [ "-Detnaviv=true" ];
+        });
       };
 
       nixosConfigurations.misaki = nixpkgs.lib.nixosSystem {

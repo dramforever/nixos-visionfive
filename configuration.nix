@@ -32,6 +32,7 @@
       "earlycon=sbi"
       # https://github.com/starfive-tech/linux/issues/14
       "stmmac.chain_mode=1"
+      # "clk_ignore_unused"
     ];
 
     initrd.kernelModules = [
@@ -68,6 +69,10 @@
       {
         name = "spi-flash";
         dtsFile = ./dt-overlays/spi-flash.dts;
+      }
+      {
+        name = "gpu";
+        dtsFile = ./dt-overlays/gpu.dts;
       }
     ];
   };
