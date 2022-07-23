@@ -107,11 +107,20 @@
     };
   };
 
+  security.sudo.wheelNeedsPassword = false;
+
   users = {
     mutableUsers = false;
     users.root.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII2X4EKIQTUUctgGnrXhHYddKzs69hXsmEK2ePBzSIwM"
     ];
+    users.dram = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII2X4EKIQTUUctgGnrXhHYddKzs69hXsmEK2ePBzSIwM"
+      ];
+    };
   };
 
   services.journald.extraConfig = ''
