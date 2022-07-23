@@ -127,7 +127,10 @@
     Storage=volatile
   '';
 
-  environment.systemPackages = with pkgs; [ neofetch ];
+  environment.systemPackages = with pkgs; [
+    neofetch
+    binderlay
+  ];
 
   system.stateVersion = "21.11";
 }

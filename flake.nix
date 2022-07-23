@@ -1,6 +1,11 @@
 {
   inputs.nixpkgs.url = "github:NickCao/nixpkgs/riscv";
 
+  inputs.binderlay = {
+    url = "github:dramforever/binderlay";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   inputs.sops-nix = {
     url = "github:Mic92/sops-nix";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -14,14 +19,17 @@
   nixConfig.extra-substituters = "https://cache.nichi.co";
   nixConfig.extra-trusted-public-keys = "hydra.nichi.co-0:P3nkYHhmcLR3eNJgOAnHDjmQLkfqheGyhZ6GLrUVHwk=";
 
-  outputs = { self, nixpkgs, sops-nix, starfive-linux }:
+  outputs = { self, nixpkgs, binderlay, sops-nix, starfive-linux }:
     let eachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
     in {
       legacyPackages = eachSystem (system:
         import nixpkgs {
           inherit system;
           crossSystem.config = "riscv64-unknown-linux-gnu";
-          overlays = [ self.overlays.starfive-linux ];
+          overlays = [
+            self.overlays.starfive-linux
+            binderlay.overlays.default
+          ];
         });
 
       overlays.starfive-linux = self: super: {

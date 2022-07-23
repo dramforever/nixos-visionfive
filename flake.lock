@@ -1,5 +1,41 @@
 {
   "nodes": {
+    "binderlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1658601286,
+        "narHash": "sha256-WvUjKM+EtNQT/Lsb1grGVDDxwWk+RB93vM7XNaMwpyo=",
+        "owner": "dramforever",
+        "repo": "binderlay",
+        "rev": "e84d9d8603058604bc8db6bfd9aabf1d49e6d07b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dramforever",
+        "repo": "binderlay",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1656065134,
+        "narHash": "sha256-oc6E6ByIw3oJaIyc67maaFcnjYOz1mMcOtHxbEf9NwQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "bee6a7250dd1b01844a2de7e02e4df7d8a0a206c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1658195558,
@@ -34,9 +70,32 @@
     },
     "root": {
       "inputs": {
+        "binderlay": "binderlay",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
         "starfive-linux": "starfive-linux"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "binderlay",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1658458343,
+        "narHash": "sha256-kzVNJ3EMIlwzztBQQxHv+kGr+L+pYdjFX8LSf3G8LN4=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a6c778067fb6682e4b14835a0957ac2d235f5593",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "sops-nix": {
