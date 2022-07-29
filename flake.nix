@@ -59,5 +59,7 @@
           { nixpkgs.pkgs = self.legacyPackages."x86_64-linux"; }
         ];
       };
+
+      packages.x86_64-linux.misaki = self.nixosConfigurations.misaki.config.system.build.toplevel;
     };
 }
