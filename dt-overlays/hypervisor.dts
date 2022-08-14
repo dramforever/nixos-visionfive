@@ -1,0 +1,14 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "starfive,jh7100";
+};
+
+&U74_0 {
+    riscv,isa = "rv64imafdch";
+};
+
+&U74_1 {
+    riscv,isa = "rv64imafdch";
+};

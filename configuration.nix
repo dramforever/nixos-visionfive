@@ -74,6 +74,10 @@
         name = "gpu";
         dtsFile = ./dt-overlays/gpu.dts;
       }
+      {
+        name = "hypervisor";
+        dtsFile = ./dt-overlays/hypervisor.dts;
+      }
     ];
   };
 

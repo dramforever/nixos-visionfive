@@ -34,6 +34,9 @@ in buildLinux (args // {
     PTP_1588_CLOCK = yes;
     STMMAC_ETH = yes;
     STMMAC_PCI = yes;
+
+    VIRTUALIZATION = yes;
+    KVM = module;
   };
 
   extraMeta = {
