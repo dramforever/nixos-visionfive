@@ -23,9 +23,3 @@ Based on: https://github.com/MatthewCroughan/visionfive-nix/blob/master/kernel.n
 ### `dt-overlays/jtag-pins.dts`
 
 A device tree overlay that keeps JTAG pins available even after boot.
-
-### `modules/device-tree.nix`
-
-Modified version of `nixos/modules/hardware/device-tree.nix` from Nixpkgs.
-
-See: https://github.com/NixOS/nixpkgs/pull/181063

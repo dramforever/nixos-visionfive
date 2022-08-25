@@ -1,9 +1,6 @@
 { config, pkgs, lib, modulesPath, ... }:
 
 {
-  disabledModules = [ "hardware/device-tree.nix" ];
-  imports = [ ./modules/device-tree.nix ];
-
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age = {
